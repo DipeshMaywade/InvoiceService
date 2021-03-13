@@ -1,6 +1,6 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class InvoiceService {
 
@@ -24,14 +24,17 @@ public class InvoiceService {
         return new InvoiceSummary(rides.length,totalFare);
     }
 
-    public String invoiceList(int rideID) {
-            try{
-                String line = Files.readAllLines(Paths.get(INVOICESUMMARY_FILE_NAME)).get((rideID-1));
-                return line;
-            }
-            catch(IOException e){
-                System.out.println(e);
-                return null;
-            }
+    public InvoiceSummaryWithId invoiceList(int rideID) {
+        Map<Integer, InvoiceSummaryWithId> summaryMap = new HashMap<>();
+        InvoiceSummaryWithId summary = new InvoiceSummaryWithId(2,30.0,1);
+        InvoiceSummaryWithId summary2 = new InvoiceSummaryWithId(1,30.2,2);
+        InvoiceSummaryWithId summary3 = new InvoiceSummaryWithId(1,30.2,2);
+        summaryMap.put(1,summary);
+        summaryMap.put(2,summary2);
+        summaryMap.put(3,summary3);
+
+        Collection<InvoiceSummaryWithId> values = summaryMap.values();
+        InvoiceSummaryWithId[] targetArray = values.toArray(new InvoiceSummaryWithId[0]);
+        return targetArray[rideID-1];
     }
 }

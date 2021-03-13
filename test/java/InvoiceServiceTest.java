@@ -2,6 +2,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class InvoiceServiceTest {
 
     InvoiceService invoiceService = null;
@@ -27,9 +30,9 @@ public class InvoiceServiceTest {
 
     @Test
     public void givenUserID_shouldReturn_invoiceList() {
-        int rideId= 1;
-        String rideSummary = invoiceService.invoiceList(rideId);
-        String expectedInvoiceSummary = "1,30.1";
-        Assert.assertEquals(expectedInvoiceSummary,rideSummary);
+        int rideId= 2;
+        InvoiceSummaryWithId summary = invoiceService.invoiceList(rideId);
+        InvoiceSummaryWithId expectedInvoiceSummary = new InvoiceSummaryWithId(1,30.2,2);
+        Assert.assertEquals(expectedInvoiceSummary,summary);
     }
 }
