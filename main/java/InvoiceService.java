@@ -6,8 +6,6 @@ public class InvoiceService {
 
     private static final double MINIMUM_COST_PER_KM = 10;
     private static final double COST_PER_TIME = 1.0;
-    public static String INVOICESUMMARY_FILE_NAME = "invoiceSummary.txt";
-
 
     public double CalculateFare(double dis, double time) {
 
