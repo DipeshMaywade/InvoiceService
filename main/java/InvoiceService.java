@@ -26,13 +26,11 @@ public class InvoiceService {
         Map<Integer, InvoiceSummaryWithId> summaryMap = new HashMap<>();
         InvoiceSummaryWithId summary = new InvoiceSummaryWithId(2,30.0,1);
         InvoiceSummaryWithId summary2 = new InvoiceSummaryWithId(1,30.2,2);
-        InvoiceSummaryWithId summary3 = new InvoiceSummaryWithId(1,30.2,2);
-        summaryMap.put(1,summary);
-        summaryMap.put(2,summary2);
-        summaryMap.put(3,summary3);
+        InvoiceSummaryWithId summary3 = new InvoiceSummaryWithId(1,30.2,3);
+        summaryMap.put(summary.id,summary);
+        summaryMap.put(summary2.id,summary2);
+        summaryMap.put(summary3.id,summary3);
 
-        Collection<InvoiceSummaryWithId> values = summaryMap.values();
-        InvoiceSummaryWithId[] targetArray = values.toArray(new InvoiceSummaryWithId[0]);
-        return targetArray[rideID-1];
+        return summaryMap.get(rideID);
     }
 }

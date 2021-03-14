@@ -3,7 +3,7 @@ public class InvoiceSummaryWithId {
     public final double avgFare;
     public final int rides;
     public final double fare;
-    private final int id;
+    public final int id;
 
     public InvoiceSummaryWithId(int rides, double fare, int id) {
         this.rides = rides;
